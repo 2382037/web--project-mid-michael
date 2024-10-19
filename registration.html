@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="kael ganteng.jpg">
+    <style>/* Variabel warna */
+        :root {
+          --primary-color: #3498db;
+          --secondary-color: #2c3e50;
+          --accent-color: #e74c3c;
+          --background-color: #ecf0f1;
+          --text-color: #333;
+        }
+        
+        /* Reset dan dasar */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        
+        body {
+          display: grid;
+          grid-template-areas:
+            "header header"
+            "nav nav"
+            "main aside"
+            "footer footer";
+          grid-template-columns: 3fr 1fr;
+          grid-gap: 20px;
+          font-family: "Roboto", Arial, sans-serif;
+          line-height: 1.6;
+          background-color: var(--background-color);
+          color: var(--text-color);
+        }
+        
+        /* Header */
+        header {
+          grid-area: header;
+          background-color: var(--primary-color);
+          color: white;
+          text-align: center;
+          padding: 2rem;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+          font-size: 2.5rem;
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+        }
+        
+        /* Navigation */
+        nav {
+          grid-area: nav;
+          background-color: var(--secondary-color);
+          padding: 1rem;
+        }
+        
+        nav ul {
+          list-style-type: none;
+          display: flex;
+          justify-content: center;
+        }
+        
+        nav ul li {
+          margin: 0 15px;
+        }
+        
+        nav a {
+          text-decoration: none;
+          color: white;
+          font-weight: bold;
+          font-size: 1.1rem;
+          transition: color 0.3s ease;
+        }
+        
+        nav a:hover {
+          color: var(--accent-color);
+        }
+        
+        /* Main Content */
+        main {
+          grid-area: main;
+          padding: 2rem;
+          background-color: white;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-photo {
+          width: 200px; /* Maximum width */
+          aspect-ratio: 3 / 4; /* Aspect ratio 3x4 */
+          object-fit: cover; /* Ensures the image fits well inside the aspect ratio */
+          border-radius: 10px; /* Optional: Adds rounded corners */
+          margin: 20px 0; /* Adds space around the image */
+        }
+        
+        h2 {
+          color: var(--primary-color);
+          margin-bottom: 1rem;
+          border-bottom: 2px solid var(--primary-color);
+          padding-bottom: 0.5rem;
+        }
+        
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: var(--secondary-color);
+          margin-top: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+        
+        p {
+          margin-bottom: 1rem;
+        }
+        
+        /* Aside */
+        aside {
+          grid-area: aside;
+          background-color: var(--secondary-color);
+          color: white;
+          padding: 1.5rem;
+          border-radius: 8px;
+        }
+        
+        aside h3 {
+          color: white;
+          border-bottom: 1px solid white;
+          padding-bottom: 0.5rem;
+          margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+          background-color: #333; /* Dark background for the footer */
+          color: white; /* White text color for contrast */
+          text-align: center; /* Center the text */
+          padding: 10px 0; /* Padding for spacing */
+          position: fixed; /* Fixes the footer at the bottom */
+          bottom: 0;
+          left: 0;
+          width: 100%; /* Makes the footer span the full width */
+          box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+        }
+        
+        footer p {
+          margin: 0; /* Removes margin from the paragraph */
+          font-size: 14px; /* Sets a smaller font size */
+        }
+        
+        
+        /* Responsive Image */
+        .responsive-image {
+          max-width: 100%;
+          height: auto;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease;
+        }
+        
+        .responsive-image:hover {
+          transform: scale(1.05);
+        }
+        
+        /* Lists */
+        ul,
+        ol {
+          margin-left: 1.5rem;
+          margin-bottom: 1rem;
+        }
+        
+        /* Links */
+        a {
+          color: var(--primary-color);
+          text-decoration: none;
+          transition: color 0.3s ease;
+        }
+        
+        a:hover {
+          color: var(--accent-color);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          body {
+            grid-template-areas:
+              "header"
+              "nav"
+              "main"
+              "aside"
+              "footer";
+            grid-template-columns: 1fr;
+          }
+        
+          nav ul {
+            flex-direction: column;
+            align-items: center;
+          }
+        
+          nav ul li {
+            margin: 10px 0;
+          }
+        }
+        
+        /* Additional Enhancements */
+        .section {
+          margin-bottom: 2rem;
+          padding: 1rem;
+          background-color: #f8f9fa;
+          border-radius: 8px;
+          transition: box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        blockquote {
+          font-style: italic;
+          border-left: 4px solid var(--primary-color);
+          padding-left: 1rem;
+          margin: 1rem 0;
+          color: #555;
+        }
+        
+        /* Button styles for potential use */
+        .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: var(--primary-color);
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+          background-color: var(--accent-color);
+        }
+        
+        .gallery-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 15px;
+          padding: 20px;
+        }
+        
+        .gallery-item {
+          flex: 1 1 calc(25% - 30px); /* 4 gambar per baris dengan jarak 15px */
+          max-width: calc(25% - 30px);
+          position: relative;
+          overflow: hidden;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease;
+        }
+        
+        .gallery-item img {
+          width: 100%;
+          height: auto;
+          display: block;
+          transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+          transform: scale(1.05);
+        }
+        
+        .gallery-item img:hover {
+          transform: scale(1.1);
+        }
+        
+        .gallery-item::after {
+          content: attr(alt);
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          padding: 10px;
+          background: rgba(0, 0, 0, 0.6);
+          color: #fff;
+          text-align: center;
+          font-size: 16px;
+          font-weight: bold;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::after {
+          opacity: 1;
+        }
+        
+        /* Responsif */
+        @media screen and (max-width: 1024px) {
+          .gallery-item {
+              flex: 1 1 calc(33.333% - 30px); /* 3 gambar per baris */
+              max-width: calc(33.333% - 30px);
+          }
+        }
+        
+        @media screen and (max-width: 768px) {
+          .gallery-item {
+              flex: 1 1 calc(50% - 30px); /* 2 gambar per baris */
+              max-width: calc(50% - 30px);
+          }
+        }
+        
+        @media screen and (max-width: 480px) {
+          .gallery-item {
+              flex: 1 1 100%; /* 1 gambar per baris */
+              max-width: 100%;
+          }
+        }
+        
+        .form-container {
+          background-color: #fff;
+          padding: 20px;
+          margin: auto;
+          width: 400px;
+          border-radius: 8px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+          margin-bottom: 15px;
+        }
+        label {
+          display: block;
+          margin-bottom: 5px;
+          font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
+          width: 100%;
+          padding: 8px;
+          box-sizing: border-box;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+        }
+        button {
+          background-color: #28a745;
+          color: white;
+          padding: 10px 15px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+        }
+        button:hover {
+          background-color: #218838;
+        }
+        .navigation {
+          margin-top: 20px;
+        }
+        .navigation a {
+          margin-right: 10px;
+          color: #007bff;
+          text-decoration: none;
+        }
+        .navigation a:hover {
+          text-decoration: underline;
+        }</style>
+</head>
+<body>
+    <header>
+        <h1>Portfolio Saya</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="myHoliday.html">My Holiday</a></li>
+          <li><a href="registration.html">Login</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="form-container">
+            <h2>Registration Form</h2>
+            <form action="submit_registration.php" method="post">
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" name="full_name" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="birth-date">Birth Date</label>
+                    <input type="date" id="birth-date" name="birth_date" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="phone-number">Phone Number</label>
+                    <input type="tel" id="phone-number" name="phone_number" pattern="[0-9]{10}" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="town">Town</label>
+                    <input type="text" id="town" name="town" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="zip-code">Zip Code</label>
+                    <input type="text" id="zip-code" name="zip_code" pattern="[0-9]{5}" required>
+                </div>
+    
+                <button type="submit">Register</button>
+            </form>
+    
+      
+        </div>
+    
+    </main>
+
+    
+    <footer>
+        <p>&copy; <p>&copy; 2024 Michael. All Rights Reserved..</p>
+    </footer>
+</body>
+</html>
